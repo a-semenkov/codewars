@@ -19,5 +19,14 @@ function alphabetPosition(text) {
     .join(' ');
 }
 
-x = alphabetPosition('.!213sdf sd');
-x;
+// faster
+
+function alphabetPositionFor(text) {
+  let result = '';
+  for (let i = 0; i < text.length; i++) {
+    const code = text.toLowerCase().charCodeAt(i);
+    if (code > 96 && code < 123) result += code - 96 + ' ';
+  }
+
+  return result.slice(0, result.length - 1);
+}
