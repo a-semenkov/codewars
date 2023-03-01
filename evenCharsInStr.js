@@ -10,6 +10,3 @@ function evenChars(string) {
     ? 'invalid string'
     : [...string].filter((item, index) => index % 2 !== 0);
 }
-
-const x = evenChars('s');
-x;
