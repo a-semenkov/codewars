@@ -20,3 +20,22 @@ function persistence(num) {
   }
   return iterations;
 }
+
+// более эффективное решение
+
+function persistenceWhile(num) {
+  let iterations = 0;
+
+  num = num.toString();
+
+  while (num.length > 1) {
+    iterations++;
+    num = num
+      .split('')
+      .map(Number)
+      .reduce((a, b) => a * b)
+      .toString();
+  }
+
+  return iterations;
+}
