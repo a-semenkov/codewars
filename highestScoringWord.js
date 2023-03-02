@@ -13,12 +13,15 @@
 function high(sentence) {
   wordValue = 0;
   const u = sentence.split('').reduce((acc, item, index, arr) => {
-    if (/[\w]/g.test(item) && index !== arr.length - 1) {
+    if (/[\w]/g.test(item)) {
       wordValue += item.toLowerCase().charCodeAt(0) - 96;
-    } else {
+    }
+
+    if (index === arr.length - 1 || /[ ]/.test(item)) {
       acc.push(wordValue);
       wordValue = 0;
     }
+
     return acc;
   }, []);
 
@@ -28,5 +31,11 @@ function high(sentence) {
 
 //
 
-v = high('man i need a taxi up to ubud');
-v;
+// менее производительное решение со вложенным циклом, но более понятное и простое
+
+function high(s) {
+  let as = s
+    .split(' ')
+    .map((s) => [...s].reduce((a, b) => a + b.charCodeAt(0) - 96, 0));
+  return s.split(' ')[as.indexOf(Math.max(...as))];
+}
