@@ -7,12 +7,20 @@
 // Don't forget to rate this kata! Thanks :)
 
 String.prototype.camelCase = function () {
-  console.log(this);
-  const word = '' + this;
-  word;
-
-  return 'bbb';
+  return [...this].reduce((acc, i, index, arr) => {
+    if (index === 0 || arr[index - 1] === ' ') {
+      acc += i.toUpperCase();
+    } else if (i !== ' ') {
+      acc += i;
+    }
+    return acc;
+  }, '');
 };
 
-v = 'camel case word'.camelCase();
-v;
+String.prototype.camelCase2 = function () {
+  return this.split(' ')
+    .map((word) => {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join('');
+};
