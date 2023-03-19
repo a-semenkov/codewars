@@ -51,3 +51,13 @@ function dirReduc(arr) {
 
 v = dirReduc(['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST']);
 v;
+
+function dirReduction(arr) {
+  arr.reduce((acc, item) => {
+    acc[item] = acc.hasOwnProperty(item) ? acc[item] + 1 : 1;
+    return acc;
+  }, {});
+}
+
+i = dirReduction(['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST']);
+i;
